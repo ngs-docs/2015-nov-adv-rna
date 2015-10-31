@@ -1,3 +1,6 @@
+Quantifying RNAseq data with salmon
+===================================
+
 Start from a blank Ubuntu 14.04 machine, ~15 GB of RAM, and a goodly amount
 of disk space on /mnt (AWS m3.xlarge, for example).
 
