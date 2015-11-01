@@ -1,6 +1,10 @@
 Quantifying RNAseq data with salmon
 ===================================
 
+Ref: http://biorxiv.org/content/early/2015/06/27/021592
+
+Documentation: http://salmon.readthedocs.org/en/latest/
+
 Start from a blank Ubuntu 14.04 machine, ~15 GB of RAM, and a goodly amount
 of disk space on /mnt (AWS m3.xlarge, for example).
 
@@ -60,8 +64,12 @@ Grab the reads and split them up::
    do
       BASE=$(basename $i .pe.qc.fq.gz);
       zcat $i |
+           head -400000 |
            split-paired-reads.py -1 $BASE.1.fq -2 $BASE.2.fq;
    done
+
+(Note, here we're taking only the first 100,000 reads; remove the
+``head -400000`` line if you want all of them.)
 
 Quantify them::
 
