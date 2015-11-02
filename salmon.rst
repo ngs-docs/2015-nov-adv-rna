@@ -28,7 +28,7 @@ Install the necessary software::
         default-jre pkg-config libncurses5-dev r-base-core r-cran-gplots \
         python-matplotlib python-pip python-virtualenv sysstat fastqc \
         trimmomatic bowtie samtools blast2 cmake libboost-all-dev liblzma-dev \
-        r-bioc-edgeR
+        r-bioc-edgeR hmmer ncbi-blast+-legacy emboss
 
 Install `khmer <http://khmer.readthedocs.org/en/v2.0/>`__::
 
