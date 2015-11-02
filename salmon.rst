@@ -60,15 +60,25 @@ Put Salmon in your path::
 Getting the data
 ----------------
 
-Now, create an EBS volume from snapshot snap-a84c2ee7, attach it to
-your machine, and mount it as /mnt/data.  Also make sure /mnt/ is
-writeable::
+..
 
-   sudo mkdir /mnt/data
-   sudo mount /dev/xvdf /mnt/data
-   sudo chmod a+rwxt /mnt
+   Now, create an EBS volume from snapshot snap-a84c2ee7, attach it to
+   your machine, and mount it as /mnt/data.  Also make sure /mnt/ is
+   writeable::
 
-(This snapshot contains data from `Tulin et al., 2013
+      sudo mkdir /mnt/data
+      sudo mount /dev/xvdf /mnt/data
+      sudo chmod a+rwxt /mnt
+
+Do::
+
+   sudo chmod a+rwxt /mnt   sudo chmod a+rwxt /mnt
+   mkdir /mnt/data
+   cd /mnt/data/
+   curl -O https://s3.amazonaws.com/public.ged.msu.edu/nema-subset.tar.gz
+   tar xzf nema-subset.tar.gz
+
+(This is data from `Tulin et al., 2013
 <http://www.evodevojournal.com/content/4/1/16>`__ that was processed
 and assembled with `the khmer protocols steps 1-3
 <http://khmer-protocols.readthedocs.org/en/ctb/mrnaseq/index.html>`__.)
