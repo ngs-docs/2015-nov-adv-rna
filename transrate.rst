@@ -1,18 +1,22 @@
-See also https://github.com/ngs-docs/2015-nov-adv-rna/blob/master/salmon.rst
+Measuring transcriptome quality with transrate
+==============================================
 
-Install an updated version of SNAP, for this older Ubuntu arch::
+How do you measure the quality of your transcriptome? In some of the
+beginner workshops, we suggested mapping your RNAseq reads back to
+the transcriptome and counting the fraction that mapped.  Transrate
+takes this kind of idea quite a bit further and measures several
+read-based metrics.
 
-   cd
-   git clone https://github.com/amplab/snap.git
-   cd snap
-   make
-   sudo cp snap-aligner /usr/local/bin
+Transrate Web site + docs: http://hibberdlab.com/transrate/
 
-Also::
+Transrate preprint: http://biorxiv.org/content/early/2015/06/27/021626
 
-   # install khmer, source khmer env
+We'll start from the m4.xlarge Amazon machine booted & configured in
+`salmon.rst <salmon.rst>`__.  If you are just running this, you'll need
+to run the apt-get commands, install khmer, and mount the data snapshot
+before continuing.
 
-Grab transrate::
+Next, grab transrate::
 
    cd
    curl -O -L https://bintray.com/artifact/download/blahah/generic/transrate-1.0.1-linux-x86_64.tar.gz
@@ -21,14 +25,17 @@ Grab transrate::
    export PATH=$PATH:$HOME/transrate-1.0.1-linux-x86_64
    echo 'export PATH=$PATH:$HOME/transrate-1.0.1-linux-x86_64' >> ~/.bashrc
 
-Create working directory::
+Create a working directory::
 
    mkdir /mnt/transrate
    cd /mnt/transrate
 
+    fix for long headers (from our mailing list):
+sed -e '/^>.{81}/ s/^(.{80}).*$/\1/' assembly.fasta > assembly.truncated_deflines.fasta
+
    # @@CTB copy in nema.fa from snapshot; see salmon.rst
 
-Run::
+Run an initial evaluation of your assembly, without using any reads::
 
    transrate -a nema.fa
 

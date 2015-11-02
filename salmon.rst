@@ -1,12 +1,25 @@
 Quantifying RNAseq data with salmon
 ===================================
 
-Ref: http://biorxiv.org/content/early/2015/06/27/021592
+Salmon is one of a breed of new, very fast RNAseq counting packages.
+Like Kallisto and Sailfish, Salmon counts fragments without doing
+up-front read mapping.  Salmon can be used with edgeR and others
+to do differential expression analysis.
 
-Documentation: http://salmon.readthedocs.org/en/latest/
+Salmon preprint: http://biorxiv.org/content/early/2015/06/27/021592
 
-Start from a blank Ubuntu 14.04 machine, ~15 GB of RAM, and a goodly amount
-of disk space on /mnt (AWS m3.xlarge, for example).
+Salmon documentation: http://salmon.readthedocs.org/en/latest/
+
+Starting up a machine
+---------------------
+
+We're going to use Amazon Web Services for this.
+
+Start up an m4.xlarge running blank Ubuntu 14.04.  (This gives you 15 GB of
+RAM.)
+
+Log in with MobaXterm or ssh.  (See `using Amazon docs
+<http://angus.readthedocs.org/en/2015/amazon/>`__ for help.)
 
 Install the necessary software::
 
@@ -15,6 +28,16 @@ Install the necessary software::
          default-jre pkg-config libncurses5-dev r-base-core r-cran-gplots \
          python-matplotlib python-pip python-virtualenv sysstat fastqc \
          trimmomatic bowtie samtools blast2 cmake libboost-all-dev liblzma-dev
+
+Install `khmer <http://khmer.readthedocs.org/en/v2.0/>`__::
+
+   cd ~/
+   python2.7 -m virtualenv work
+   source work/bin/activate
+   pip install -U setuptools
+   git clone --branch v2.0 https://github.com/dib-lab/khmer.git
+   cd khmer
+   make install
 
 Clone salmon from github (use CTB's version that's fixed for Boost 1.5.4)::
 
