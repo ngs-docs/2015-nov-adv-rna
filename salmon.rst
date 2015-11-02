@@ -114,9 +114,9 @@ Link the reads in that we downloaded::
 
 Now, quantify the reads against the reference using Salmon::
 
-   for i in /mnt/data/*.pe.qc.fq.gz;
+   for i in *.1.fq
    do
-      BASE=$(basename $i .pe.qc.fq.gz)
+      BASE=$(basename $i .1.fq)
       salmon quant -i nema_index -1 $BASE.1.fq -2 $BASE.2.fq \
              -o $BASE.quant --libType IU;
    done
