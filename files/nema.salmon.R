@@ -45,7 +45,7 @@ labels=c("0Hour_1", "0Hour_2", "0Hour_3", "0Hour_4", "0Hour_5",
 "6Hour_1", "6Hour_2", "6Hour_3",
 "6Hour_4", "6Hour_5")
 
-data <- readDGE(files, header=FALSE)
+data <- readDGE(files)
 
 print(data)
 head(data$counts)

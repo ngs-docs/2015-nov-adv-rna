@@ -1,3 +1,11 @@
+# Agenda
+
+## Nov 2-3, 2015.
+
+* Starting at 9:15am, going until noon, with a coffee break;
+
+* 1-3pm, individual/group consultation
+
 1. [Using Salmon to quantify RNAseq](salmon.rst)
 
    Salmon is one of a breed of new, very fast RNAseq counting packages.

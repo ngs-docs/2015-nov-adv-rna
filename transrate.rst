@@ -16,6 +16,9 @@ We'll start from the m4.xlarge Amazon machine booted & configured in
 to run the apt-get commands, install khmer, and mount the data snapshot
 before continuing.
 
+Install transrate
+-----------------
+
 Next, grab transrate::
 
    cd
@@ -25,15 +28,18 @@ Next, grab transrate::
    export PATH=$PATH:$HOME/transrate-1.0.1-linux-x86_64
    echo 'export PATH=$PATH:$HOME/transrate-1.0.1-linux-x86_64' >> ~/.bashrc
 
+Get the data
+------------
+
 Create a working directory::
 
    mkdir /mnt/transrate
    cd /mnt/transrate
 
-    fix for long headers (from our mailing list):
-sed -e '/^>.{81}/ s/^(.{80}).*$/\1/' assembly.fasta > assembly.truncated_deflines.fasta
+Copy in the data, fixing any long headers that might be leftover from
+Trinity or Cufflinks or whatnot::
 
-   # @@CTB copy in nema.fa from snapshot; see salmon.rst
+   sed -e '/^>.{81}/ s/^(.{80}).*$/\1/' /mnt/data/nema.fa > nema.fa
 
 Run an initial evaluation of your assembly, without using any reads::
 
@@ -114,3 +120,7 @@ Next, let's evaluate against reads, prepared as in salmon.rst::
 Run! :::
 
    transrate -a nema.fa --left=$LIST1 --right=$LIST2
+
+Challenge:
+
+* evaluate reference transcriptome, published transcriptome
