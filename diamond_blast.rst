@@ -2,6 +2,7 @@ Blasting with DIAMOND
 ===================================
 
 Make a new directory for diamond::
+   
    cd
    mkdir diamond
 
