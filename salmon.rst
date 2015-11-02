@@ -179,7 +179,7 @@ Download the entire counts data set::
   curl -L -O https://github.com/ngs-docs/2015-nov-adv-rna/raw/master/files/nema-counts.tar.gz
   tar xzf nema-counts.tar.gz
 
-and run differential expression etc on it.
+and run edgeR differential expression etc on it, as above.
 
 Then, create an MA plot comparing 6 Hour vs 12 Hour.
 

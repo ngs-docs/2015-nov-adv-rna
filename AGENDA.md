@@ -2,9 +2,13 @@
 
 ## Nov 2-3, 2015.
 
-* Starting at 9:15am, going until noon, with a coffee break;
+[Workshop page](http://dib-training.readthedocs.org/en/pub/2015-11-02-mRNAseq-intermediate.html)
 
-* 1-3pm, individual/group consultation
+Starting at 9:15am, going until noon, with a coffee break;
+
+1-3pm, individual/group consultation
+
+## Tutorials
 
 1. [Using Salmon to quantify RNAseq](salmon.rst)
 
