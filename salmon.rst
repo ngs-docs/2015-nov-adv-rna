@@ -94,19 +94,23 @@ Index it with salmon::
 
    salmon index --index nema_index --transcripts nema.fa --type quasi   
 
-Grab the reads and split them up::
+.. Grab the reads and split them up::
 
-   for i in /mnt/data/*.pe.qc.fq.gz;
-   do
-      BASE=$(basename $i .pe.qc.fq.gz);
-      zcat $i |
-           head -400000 |
-           split-paired-reads.py -1 $BASE.1.fq -2 $BASE.2.fq;
-   done
+      for i in /mnt/data/*.pe.qc.fq.gz;
+      do
+         BASE=$(basename $i .pe.qc.fq.gz);
+         zcat $i |
+             head -400000 |
+              split-paired-reads.py -1 $BASE.1.fq -2 $BASE.2.fq;
+      done
 
-(Note, here we're taking only the first 100,000 reads; remove the
-``head -400000`` line if you want all of them, but that will take much
-longer.)
+   (Note, here we're taking only the first 100,000 reads; remove the
+   ``head -400000`` line if you want all of them, but that will take much
+   longer.)
+
+Link the reads in that we downloaded::
+
+   ln -fs /mnt/data/*.fq .
 
 Now, quantify the reads against the reference using Salmon::
 
