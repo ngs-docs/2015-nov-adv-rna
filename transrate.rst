@@ -144,7 +144,34 @@ Next, let's evaluate against reads, prepared as in salmon.rst::
 
 Results::
 
-   (this currently breaks on small read subsets; working on it!)
+   [ INFO] 2015-11-02 15:33:50 : -----------------------------------
+   [ INFO] 2015-11-02 15:33:50 : fragments                   1650000
+   [ INFO] 2015-11-02 15:33:50 : fragments mapped            1513759
+   [ INFO] 2015-11-02 15:33:50 : p fragments mapped             0.92
+   [ INFO] 2015-11-02 15:33:50 : good mappings               1346046
+   [ INFO] 2015-11-02 15:33:50 : p good mapping                 0.82
+   [ INFO] 2015-11-02 15:33:50 : bad mappings                 167713
+   [ INFO] 2015-11-02 15:33:50 : potential bridges              4711
+   [ INFO] 2015-11-02 15:33:50 : bases uncovered           103640900
+   [ INFO] 2015-11-02 15:33:50 : p bases uncovered              0.75
+   [ INFO] 2015-11-02 15:33:50 : contigs uncovbase            198082
+   [ INFO] 2015-11-02 15:33:50 : p contigs uncovbase             1.0
+   [ INFO] 2015-11-02 15:33:50 : contigs uncovered            183537
+   [ INFO] 2015-11-02 15:33:50 : p contigs uncovered            0.93
+   [ INFO] 2015-11-02 15:33:50 : contigs lowcovered           197116
+   [ INFO] 2015-11-02 15:33:50 : p contigs lowcovered           0.99
+   [ INFO] 2015-11-02 15:33:50 : contigs segmented               564
+   [ INFO] 2015-11-02 15:33:50 : p contigs segmented             0.0
+   [ INFO] 2015-11-02 15:33:50 : Read metrics done in 54 seconds
+   [ INFO] 2015-11-02 15:33:50 : No reference provided, skipping comparative diagnostics
+   [ INFO] 2015-11-02 15:33:50 : TRANSRATE ASSEMBLY SCORE     0.0136
+   [ INFO] 2015-11-02 15:33:50 : -----------------------------------
+   [ INFO] 2015-11-02 15:33:50 : TRANSRATE OPTIMAL SCORE      0.4492
+   [ INFO] 2015-11-02 15:33:50 : TRANSRATE OPTIMAL CUTOFF     0.4543
+   [ INFO] 2015-11-02 15:33:51 : good contigs                  13683
+   [ INFO] 2015-11-02 15:33:51 : p good contigs                 0.07
+   [ INFO] 2015-11-02 15:33:51 : Writing contig metrics for each contig to /mnt/transrate/transrate_results/nema/contigs.csv
+   [ INFO] 2015-11-02 15:34:32 : Writing analysis results to assemblies.csv
 
 Of particular note, this analysis may be the analysis you want to try before
 deciding if you should generate a new transcriptome.
