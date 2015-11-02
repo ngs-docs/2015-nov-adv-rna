@@ -32,7 +32,7 @@ Link in the fasta::
 
 Run Diamond::
 
-   diamond  blastx -d uniprot_sprot -q nema.fa -a matches -t tempDir -p 16
+   diamond  blastx -d uniprot_sprot -q /mnt/data/nema_inList.fa -a matches -t tempDir -p 16
 
 Convert to blast tab-separated output format::
 
