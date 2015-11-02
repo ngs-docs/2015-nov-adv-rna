@@ -13,6 +13,8 @@ https://github.com/ngs-docs/2015-nov-adv-rna/blob/master/AGENDA.md
 
 Material authors:
 
-C. Titus Brown
-Tamer Mansour
-N. Tessa Pierce
+* C. Titus Brown
+
+* Tamer Mansour
+
+* N. Tessa Pierce
