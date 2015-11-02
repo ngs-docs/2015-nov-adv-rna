@@ -11,7 +11,7 @@ Download diamond::
    wget http://github.com/bbuchfink/diamond/releases/download/v0.7.9/diamond-linux64.tar.gz
    tar xzf diamond-linux64.tar.gz
 
-Put diamond in your path:
+Put diamond in your path::
    
    export PATH=$PATH:$HOME/diamond
    echo 'export PATH=$PATH:$HOME/diamond' >> ~/.bashrc
