@@ -5,6 +5,7 @@ Make a new directory for diamond::
    
    cd
    mkdir diamond
+   cd diamond
 
 Download diamond::
    
