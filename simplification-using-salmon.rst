@@ -5,16 +5,15 @@ Reduce transcriptome complexity by removing low coverage contigs. Use awk to sum
 numReads column of each quant.sf file and print contignames that have counts above threshold 
 (10 total counts)::
 
-   awk '{x[$1] += $4} END {for(y in x) if (x[y] >10) print y}' /mnt/data/*.quant/quant.sf | sort > contigs_over_threshold.txt
+   awk '{x[$1] += $4} END {for(y in x) if (x[y] >10) print y}' /mnt/data/*.quant/quant.sf | sort > /mnt/contigs_over_threshold.txt
 
 
 Use this list of contigs to subset the fasta reference.
 
-Get a python script to subset a fasta (need to add code to grab from https://github.com/bluegenes/fasta_tools)
+Get (and run) a python script to subset the fasta file, keeping all entries that match the contig names above::
 
-Run python script to extract fasta subset::
-
-   extract_fasta.py nema.fa contigs_over_threshold.txt
+   curl -O https://raw.githubusercontent.com/bluegenes/fasta_tools/master/extract_fasta.py
+   python extract_fasta.py /mnt/nema.fa /mnt/contigs_over_threshold.txt
 
 
 Evaluate the full and reduced transcriptomes using BUSCO.
@@ -48,5 +47,7 @@ Run BUSCO on the filtered assembly::
 
 
 
+Visualize transcriptome coverage in R::
 
+   Rscript plotTPM.R
 
