@@ -78,5 +78,5 @@ plotMDS(dge, labels=labels)
 dev.off()
 
 # output CSV for 0-6 hr
-write.csv(etp$table, "nema-edgeR.csv")
+write.csv(etp$table, "nema-edgeR-0v6.csv")
 
