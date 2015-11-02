@@ -152,7 +152,7 @@ deciding if you should generate a new transcriptome.
 Challenge exercise
 ------------------
 
-Repeat the above analyses with the transcriptome published in`Tulin et
+Repeat the above analyses with the transcriptome published in `Tulin et
 al., 2013 <http://www.evodevojournal.com/content/4/1/16>`__::
 
    curl -L https://darchive.mblwhoilibrary.org/bitstream/handle/1912/5613/Trinity.fasta > tulin-2013-long.fa
