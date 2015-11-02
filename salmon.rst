@@ -80,3 +80,6 @@ Quantify them::
              -o $BASE.quant --libType IU;
    done
 
+::
+
+   find . -name \*.sf -exec grep "mapping rate"
