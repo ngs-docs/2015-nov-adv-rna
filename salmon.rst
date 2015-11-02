@@ -60,9 +60,7 @@ Put Salmon in your path::
 Getting the data
 ----------------
 
-..
-
-   Now, create an EBS volume from snapshot snap-a84c2ee7, attach it to
+.. Now, create an EBS volume from snapshot snap-a84c2ee7, attach it to
    your machine, and mount it as /mnt/data.  Also make sure /mnt/ is
    writeable::
 
@@ -72,7 +70,7 @@ Getting the data
 
 Do::
 
-   sudo chmod a+rwxt /mnt   sudo chmod a+rwxt /mnt
+   sudo chmod a+rwxt /mnt
    mkdir /mnt/data
    cd /mnt/data/
    curl -O https://s3.amazonaws.com/public.ged.msu.edu/nema-subset.tar.gz
