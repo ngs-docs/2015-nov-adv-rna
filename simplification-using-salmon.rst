@@ -59,21 +59,20 @@ Run BUSCO on the filtered assembly::
    cd /mnt/busco
 
    #Download metazoa busco database
-   tmux new -s busco
-
    curl -LO http://busco.ezlab.org/files/metazoa_buscos.tar.gz
    tar -zxf metazoa_buscos.tar.gz
 
    python3 ~/BUSCO_v1.1b1/BUSCO_v1.1b1.py -m trans -in /mnt/data/nema_inList.fa \
       --cpu 16 -l metazoa -f -o nema_inList_metazoaBusco
 
+   python3 ~/BUSCO_v1.1b1/BUSCO_v1.1b1.py -m trans -in /mnt/data/nema.fa \
+      --cpu 16 -l metazoa -f -o nema_all_metazoaBusco
+
    less run*/short*
-
-   Control-b d #to exit tmux
-
 
 
 Visualize transcriptome coverage in R::
 
+   curl -O -L https://raw.githubusercontent.com/ngs-docs/2015-nov-adv-rna/master/plotTPM.R
    Rscript plotTPM.R
 
