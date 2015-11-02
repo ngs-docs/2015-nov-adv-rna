@@ -19,22 +19,12 @@ salmonTPM <- do.call("cbind",lapply(files,read.csv,sep = "\t", skip=9, colClasse
 colnames(salmonTPM) <- sapply(strsplit(files, '.q'), '[', 1)
 
 # All salmon output files are in the same order, so we can grab the gene names from one of the files; store them as a column:
-rownames(salmonTPM)  <- read.csv(files[1],sep = "\t", skip=9, colClasses=c("character", "NULL","NULL","NULL"))[[1]]
-
-#sum TPM
-sumTPMPerContig <- rowSums(salmonTPM) #get summed TPM
-
-#Plotting:
-# -->add code for simple plot (coverage per contig: x-axis, count/frequency: y-axis) 
+salmonTPM$Contig  <- read.csv(files[1],sep = "\t", skip=9, colClasses=c("character", "NULL","NULL","NULL"))[[1]]
 
 # Reshape the dataframe from wide --> long form for easier plotting with ggplot2
-salmonTPM$Contig  <- read.csv(files[1],sep = "\t", skip=9, colClasses=c("character", "NULL","NULL","NULL"))[[1]]
 meltedTPM <- melt(salmonTPM, id.vars="Contig",value.name="TPM", variable.name="Treatment") 
 
-#plot contigs on x axis, coverage in each treatment on the y axis. WAY TOO NOISY/complicated with this much data... change into something simpler.
-ggplot(data=meltedTPM,aes(x=Contig, y =TPM, color=Treatment)) + geom_point(size=.5) + scale_y_continuous(trans=log2_trans()) + theme(axis.ticks = element_blank(), axis.text.x  = element_blank()) + theme_bw()
-
-
-
+#Plot a histogram of the TPM per Contig
+ggplot(meltedTPM, aes(x=TPM)) + geom_histogram(binwidth=1) + xlab("Coverage Per Contig") + scale_x_continuous(limits = c(0, 200)) + scale_y_continuous(limits = c(0, 10000)) + theme_bw()
 
 
