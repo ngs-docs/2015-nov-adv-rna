@@ -109,8 +109,8 @@ Run Cuffmerge
    cuffmerge -o isofrac0.5 --num-threads 4 --min-isoform-fraction 0.5 assemblies.txt 2&> cuffisofrac0.5.log
 
 
-Download UCSC tools
--------------------
+Download UCSC tools & couple custom scripts
+-------------------------------------------
 :: 
 
    mkdir $workingPath/UCSC_kent_commands
@@ -120,6 +120,10 @@ Download UCSC tools
    wget -r --no-directories ftp://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/bedToBigBed
    wget -r --no-directories ftp://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/fetchChromSizes
    chmod 755 *
+
+   cd $workingPath
+   curl -L -O https://github.com/ngs-docs/2015-nov-adv-rna/raw/master/create_trackHub.sh
+   curl -L -O https://github.com/ngs-docs/2015-nov-adv-rna/raw/master/edit_trackDb.sh
 
 Initiate the basic structure for horse track hubs
 ------------------------------------------------
@@ -131,10 +135,8 @@ Initiate the basic structure for horse track hubs
    longlabel=$"UCSC track hub to compare selection isoform fraction"
    email=$"youremail@somthing.com"
    mkdir -p $workingPath/track_hub/$UCSCgenome/BigBed   
-   cd $workingPath/track_hub
-   curl -L -O https://github.com/ngs-docs/2015-nov-adv-rna/raw/master/create_trackHub.sh
-   bash create_trackHub.sh "$UCSCgenome" "$hub_name" "$shortlabel" "$longlabel" "$email"
-
+   cd track_hub
+   bash $workingPath/create_trackHub.sh "$UCSCgenome" "$hub_name" "$shortlabel" "$longlabel" "$email"
 
 
 Convert GTF files to BigBed files
@@ -143,18 +145,19 @@ Convert GTF files to BigBed files
 
    cd $workingPath/data
    $workingPath/UCSC_kent_commands/fetchChromSizes $UCSCgenome > chromSizes.txt
+   > $workingPath/data/UCSC_assemblies.txt
    for assembly in $(pwd)/isofrac*; do
      echo $assembly
      cd $assembly
      $workingPath/UCSC_kent_commands/gtfToGenePred merged.gtf merged.gpred
-     cat merged.gpred | $workingPath/UCSC_kent_commands/genePredToBed > merged.bed
+     $workingPath/UCSC_kent_commands/genePredToBed merged.gpred merged.bed
      sort -k1,1 -k2,2n merged.bed > merged_sorted.bed
-     $workingPath/UCSC_kent_commands/bedToBigBed merged_sorted.bed chromSizes.txt merged.BigBed
+     $workingPath/UCSC_kent_commands/bedToBigBed merged_sorted.bed $workingPath/data/chromSizes.txt merged.BigBed
      identifier=$(basename $assembly)
      cp merged.BigBed $workingPath/track_hub/$UCSCgenome/BigBed/${identifier}.BigBed
      echo $identifier >> $workingPath/data/UCSC_assemblies.txt
    done
-   cd $workingPath/data 
-   bash $script_path/edit_trackDb.sh "$trackDb" "UCSC_assemblies.txt"
+   trackDb=$workingPath/track_hub/$UCSCgenome/trackDb_$shortlabel.txt 
+   bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
 
 

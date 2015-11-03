@@ -1,12 +1,7 @@
 trackDb="$1"
 lib_assemblies="$2"
 
-
-libs_root=$(dirname $lib_assemblies)
-
-## load the current track data
 lib_assembly_array=()
-
 ## add the new data
 while read assembly; do
   echo $assembly
