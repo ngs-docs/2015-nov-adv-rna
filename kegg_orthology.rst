@@ -43,20 +43,26 @@ See the results of the file with::
 
    less matches_keggOrthology.txt
 
-Type 'q' to exit out of the less file viewer.
+Type 'q' to exit out of the file viewer.
 
 
 Visualize Kegg Pathways Present in the Data 
 -------------------------------------------
 
-Download and run a python script to visualize the KEGG annotations found in the metabolic pathways map::
-
-   #code coming once it's finished
+Download and run a python script to visualize the KEGG annotations. This script focuses on 
+the Metabolic Pathways overview map, but it would work with any valid Kegg Pathway::
+ 
    #KEGG REST api is down - can't test the visualization 
+   #code + commands will be put here once tested.
 
 
 See https://github.com/widdowquinn/notebooks/blob/master/Biopython_KGML_intro.ipynb for a full
-introduction to the Biopython KGML rendering module.
+introduction to the Biopython KGML rendering module. 
+
+
+
+
+
 
 
 
