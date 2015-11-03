@@ -1,4 +1,4 @@
-Get KEGG Annotations
+Visualize KEGG Pathways
 ===================================
 
 We'll start from the m3.xlarge Amazon machine booted & configured in
