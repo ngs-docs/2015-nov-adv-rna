@@ -53,7 +53,10 @@ Download and run a python script to visualize the KEGG annotations. This script 
 the Metabolic Pathways overview map, but it would work with any valid Kegg Pathway::
  
    #KEGG REST api is down - can't test the visualization 
-   #code + commands will be put here once tested.
+   git clone https://github.com/bluegenes/KGML.git
+   curl -O https://raw.githubusercontent.com/ngs-docs/2015-nov-adv-rna/master/simpleDrawKeggMap.py 
+   python simpleDrawKeggMap.py --path ko01100 --blastKO matches_keggOrthology.txt
+   
 
 
 See https://github.com/widdowquinn/notebooks/blob/master/Biopython_KGML_intro.ipynb for a full
