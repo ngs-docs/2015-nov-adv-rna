@@ -11,10 +11,41 @@ Transrate Web site + docs: http://hibberdlab.com/transrate/
 
 Transrate preprint: http://biorxiv.org/content/early/2015/06/27/021626
 
-We'll start from the m3.xlarge Amazon machine booted & configured in
-`salmon.rst <salmon.rst>`__.  If you are just running this, you'll need
-to run the apt-get commands, install khmer, and mount the data snapshot
-before continuing.
+Starting up a machine
+---------------------
+
+Start up an m3.xlarge running blank Ubuntu 14.04.  (This gives you 15 GB of
+RAM, plus lots of working disk space on /mnt.)
+
+Log in with MobaXterm or ssh.  (See `using Amazon docs
+<http://angus.readthedocs.org/en/2015/amazon/>`__ for help.)
+
+Install the necessary software::
+
+   sudo apt-get update && \
+   sudo apt-get -y install screen git curl gcc make g++ python-dev unzip \
+        default-jre pkg-config libncurses5-dev r-base-core r-cran-gplots \
+        python-matplotlib python-pip python-virtualenv sysstat fastqc \
+        trimmomatic bowtie samtools blast2 cmake libboost-all-dev liblzma-dev \
+        r-bioc-edgeR hmmer ncbi-blast+-legacy emboss
+
+Install `khmer <http://khmer.readthedocs.org/en/v2.0/>`__::
+
+   cd ~/
+   python2.7 -m virtualenv work
+   source work/bin/activate
+   pip install -U setuptools
+   git clone --branch v2.0 https://github.com/dib-lab/khmer.git
+   cd khmer
+   make install
+
+Now, grab some test data::
+
+   sudo chmod a+rwxt /mnt
+   mkdir /mnt/data
+   cd /mnt/data/
+   curl -O https://s3.amazonaws.com/public.ged.msu.edu/nema-subset.tar.gz
+   tar xzf nema-subset.tar.gz
 
 Install transrate
 -----------------
@@ -32,8 +63,8 @@ Grab and install transrate::
 
    transrate --install-deps ref
 
-Get the data
-------------
+Copy over the data
+------------------
 
 Create a working directory::
 
@@ -133,57 +164,58 @@ metrics
 These look at how the reads actually map to your transcriptome, and how
 well the transcripts in your transcriptome are supported by the reads.
 
-Next, let's evaluate against reads, prepared as in salmon.rst::
+Next, let's evaluate against reads, prepared as in `salmon.rst <salmon.rst>`__::
 
-   ln -fs ../quant/*.?.fq .
+   ln -fs ../data/*.?.fq .
 
-   LIST1=$(ls -1 *.1.fq | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
-   LIST2=$(ls -1 *.2.fq | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
+   LIST1=$(ls -1 *.1.fq | head -1 | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
+   LIST2=$(ls -1 *.2.fq | head -1 | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
 
    transrate -a nema.fa --left=$LIST1 --right=$LIST2
 
 Results::
 
-   [ INFO] 2015-11-02 15:33:50 : -----------------------------------
-   [ INFO] 2015-11-02 15:33:50 : fragments                   1650000
-   [ INFO] 2015-11-02 15:33:50 : fragments mapped            1513759
-   [ INFO] 2015-11-02 15:33:50 : p fragments mapped             0.92
-   [ INFO] 2015-11-02 15:33:50 : good mappings               1346046
-   [ INFO] 2015-11-02 15:33:50 : p good mapping                 0.82
-   [ INFO] 2015-11-02 15:33:50 : bad mappings                 167713
-   [ INFO] 2015-11-02 15:33:50 : potential bridges              4711
-   [ INFO] 2015-11-02 15:33:50 : bases uncovered           103640900
-   [ INFO] 2015-11-02 15:33:50 : p bases uncovered              0.75
-   [ INFO] 2015-11-02 15:33:50 : contigs uncovbase            198082
-   [ INFO] 2015-11-02 15:33:50 : p contigs uncovbase             1.0
-   [ INFO] 2015-11-02 15:33:50 : contigs uncovered            183537
-   [ INFO] 2015-11-02 15:33:50 : p contigs uncovered            0.93
-   [ INFO] 2015-11-02 15:33:50 : contigs lowcovered           197116
-   [ INFO] 2015-11-02 15:33:50 : p contigs lowcovered           0.99
-   [ INFO] 2015-11-02 15:33:50 : contigs segmented               564
-   [ INFO] 2015-11-02 15:33:50 : p contigs segmented             0.0
-   [ INFO] 2015-11-02 15:33:50 : Read metrics done in 54 seconds
-   [ INFO] 2015-11-02 15:33:50 : No reference provided, skipping comparative diagnostics
-   [ INFO] 2015-11-02 15:33:50 : TRANSRATE ASSEMBLY SCORE     0.0136
-   [ INFO] 2015-11-02 15:33:50 : -----------------------------------
-   [ INFO] 2015-11-02 15:33:50 : TRANSRATE OPTIMAL SCORE      0.4492
-   [ INFO] 2015-11-02 15:33:50 : TRANSRATE OPTIMAL CUTOFF     0.4543
-   [ INFO] 2015-11-02 15:33:51 : good contigs                  13683
-   [ INFO] 2015-11-02 15:33:51 : p good contigs                 0.07
-   [ INFO] 2015-11-02 15:33:51 : Writing contig metrics for each contig to /mnt/transrate/transrate_results/nema/contigs.csv
-   [ INFO] 2015-11-02 15:34:32 : Writing analysis results to assemblies.csv
-
+   [ INFO] 2015-11-03 16:24:39 : Read mapping metrics:
+   [ INFO] 2015-11-03 16:24:39 : -----------------------------------
+   [ INFO] 2015-11-03 16:24:39 : fragments                     50000
+   [ INFO] 2015-11-03 16:24:39 : fragments mapped              46378
+   [ INFO] 2015-11-03 16:24:39 : p fragments mapped             0.93
+   [ INFO] 2015-11-03 16:24:39 : good mappings                 42113
+   [ INFO] 2015-11-03 16:24:39 : p good mapping                 0.84
+   [ INFO] 2015-11-03 16:24:39 : bad mappings                   4265
+   [ INFO] 2015-11-03 16:24:39 : potential bridges               146
+   [ INFO] 2015-11-03 16:24:39 : bases uncovered           133517286
+   [ INFO] 2015-11-03 16:24:39 : p bases uncovered              0.97
+   [ INFO] 2015-11-03 16:24:39 : contigs uncovbase            198150
+   [ INFO] 2015-11-03 16:24:39 : p contigs uncovbase             1.0
+   [ INFO] 2015-11-03 16:24:39 : contigs uncovered            197905
+   [ INFO] 2015-11-03 16:24:39 : p contigs uncovered             1.0
+   [ INFO] 2015-11-03 16:24:39 : contigs lowcovered           198133
+   [ INFO] 2015-11-03 16:24:39 : p contigs lowcovered            1.0
+   [ INFO] 2015-11-03 16:24:39 : contigs segmented                12
+   [ INFO] 2015-11-03 16:24:39 : p contigs segmented             0.0
+   [ INFO] 2015-11-03 16:24:39 : Read metrics done in 196 seconds
+   [ INFO] 2015-11-03 16:24:39 : No reference provided, skipping comparative diagnostics
+   [ INFO] 2015-11-03 16:24:39 : TRANSRATE ASSEMBLY SCORE      0.009
+   [ INFO] 2015-11-03 16:24:39 : -----------------------------------
+   [ INFO] 2015-11-03 16:24:39 : TRANSRATE OPTIMAL SCORE       0.184
+   [ INFO] 2015-11-03 16:24:39 : TRANSRATE OPTIMAL CUTOFF     0.1432
+   [ INFO] 2015-11-03 16:24:40 : good contigs                   3332
+   [ INFO] 2015-11-03 16:24:40 : p good contigs                 0.02
+   [ INFO] 2015-11-03 16:24:40 : Writing contig metrics for each contig to /mnt/transrate/transrate_results/nema/contigs.csv
+   [ INFO] 2015-11-03 16:25:24 : Writing analysis results to assemblies.csv
+   
 Of particular note, this analysis may be the analysis you want to try before
 deciding if you should generate a new transcriptome.
-
+   
 Challenge exercise
 ------------------
-
+   
 Repeat the above analyses with the transcriptome published in `Tulin et
 al., 2013 <http://www.evodevojournal.com/content/4/1/16>`__::
-
-   curl -L https://darchive.mblwhoilibrary.org/bitstream/handle/1912/5613/Trinity.fasta > tulin-2013-long.fa
    
+   curl -L https://darchive.mblwhoilibrary.org/bitstream/handle/1912/5613/Trinity.fasta > tulin-2013-long.fa
+      
 You'll need to run the sed command, above, to convert
 tulin-2013-long.fa into tulin-2013.fa.
 

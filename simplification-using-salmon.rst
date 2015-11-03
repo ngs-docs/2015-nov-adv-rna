@@ -1,6 +1,12 @@
 Using Salmon Quantification to Reduce Transcriptome Complexity
 ==============================================================
 
+.. TODO:
+
+   Plot aggregate TPM
+   then, choose a cutoff
+   then, redo full quantification.
+
 In many assemblies - especially de novo assemblies, done without a
 reference genome - there are many transcripts that don't have significant
 expression levels.  This can interfere with quantification and annotation.
