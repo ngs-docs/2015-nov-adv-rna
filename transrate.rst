@@ -1,6 +1,9 @@
 Measuring transcriptome quality with transrate
 ==============================================
 
+:author: C. Titus Brown
+:date: Nov 2, 2015
+
 How do you measure the quality of your transcriptome? In some of the
 beginner workshops, we suggested mapping your RNAseq reads back to
 the transcriptome and counting the fraction that mapped.  Transrate

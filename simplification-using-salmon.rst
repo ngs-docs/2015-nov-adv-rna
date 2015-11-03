@@ -1,6 +1,9 @@
 Using Salmon Quantification to Reduce Transcriptome Complexity
 ==============================================================
 
+:author: N. Tessa Pierce
+:date: Nov 2, 2015
+
 .. TODO:
 
    Plot aggregate TPM

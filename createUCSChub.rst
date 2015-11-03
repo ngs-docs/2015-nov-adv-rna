@@ -1,6 +1,17 @@
 Make and share your reference based transcriptome
 =================================================
 
+:author: Tamer Mansour
+:date: Nov 3, 2015
+
+This tutorial shows how to build a new transcriptome with Cufflinks
+and share it as a custom track on the UCSC Genome Browser, using github
+to store the files.
+
+Background documentation:
+
+   https://genome.ucsc.edu/goldenPath/help/hgTrackHubHelp.html
+
 Launch an EC2 instance
 ----------------------
 Go ahead and open the EC2 service to lunch a suitable instance. 
@@ -25,14 +36,15 @@ You need an SSH client to connect from you own computer to the Amazon instance y
 3. Run PuTTY, paste the public DNS in the host name. In the left category panel, expand the SSH entry, select Auth, find your private key and click open
 4. click yes if prompted then Log in as "ubuntu"
 5. create a folder to contain all the files of this experiment and define this path
- ::
+
+Install software
+----------------
+
+Define your working directory::
 
     mkdir evalTrans
     workingPath=$"/home/ubuntu/evalTrans"
     export workingPath
-
-Install software
-----------------
 
 Install prerequisites
 ::
@@ -150,9 +162,24 @@ Populate the track DB
 ::
   
    trackDb=$workingPath/track_hub/$UCSCgenome/trackDb_$shortlabel.txt 
-   > $trackDB
+   > $trackDb
    bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
 
+Did it all work?
+----------------
+
+Check::
+
+   ls -l $workingPath/track_hub/equCab2/BigBed
+
+should yield something like::
+
+   total 352
+   -rw-rw-r-- 1 ubuntu ubuntu 69927 Nov  3 18:10 isofrac0.05.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 67022 Nov  3 18:10 isofrac0.2.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 65627 Nov  3 18:10 isofrac0.5.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 70916 Nov  3 18:10 isofrac0.7.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 70447 Nov  3 18:10 isofrac0.9.BigBed
 
 Upload your data to github
 --------------------------

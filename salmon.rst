@@ -1,6 +1,9 @@
 Quantifying RNAseq data with salmon
 ===================================
 
+:author: C. Titus Brown, ctbrown@ucdavis.edu
+:date: Nov 2, 2015
+
 Salmon is one of a breed of new, very fast RNAseq counting packages.
 Like Kallisto and Sailfish, Salmon counts fragments without doing
 up-front read mapping.  Salmon can be used with edgeR and others
