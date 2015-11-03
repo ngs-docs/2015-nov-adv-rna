@@ -19,7 +19,7 @@ sp2ko = {trans.split(":")[1]: sp.split(":")[1] for (trans,sp,extra) in (line.str
 
 
 header= ['Transcript_id', 'BLASTX','Kegg_Orthology']
-out = open(opts.blastx.split('.')[0] + '_keggOrthology.txt', 'w')
+out = open(opts.blastx.split('.m8')[0] + '_keggOrthology.txt', 'w')
 out.write("\t".join(header) + "\n")
 
 
@@ -34,9 +34,11 @@ with open(opts.blastx) as f:
 	    prev = contig
 	    spHit = line[1]
 	    spShort = spHit.split('|')[1]
-	    if spShort in sp2ko.keys():
-	        keggOrthology = sp2ko[spShort]
-	        out.write(contig + '\t' + spHit + '\t' + keggOrthology + '\n')
+        hitValue = sp2ko.get(spShort, None)
+	    #if spShort in sp2ko.keys():
+        if hitValue is not None:
+            keggOrthology = sp2ko[spShort]
+            out.write(contig + '\t' + spHit + '\t' + keggOrthology + '\n')
     f.close()
 
 
