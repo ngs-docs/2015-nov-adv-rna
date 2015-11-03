@@ -48,23 +48,19 @@ Visualize Kegg Pathways Present in the Data
 
 Install some extra python modules to visualize KEGG maps::
 
-   
    sudo pip install reportlab
    git clone https://github.com/bluegenes/KGML.git
-   ln -s KGML/*py ./
-   curl -O https://raw.githubusercontent.com/ngs-docs/2015-nov-adv-rna/master/simpleDrawKeggMap.py 
+
 
 Run the python script to visualize the KEGG annotations. ko01100 is the KEGG Metabolic Pathways overview map:: 
  
-   python simpleDrawKeggMap.py --path ko01100 --blastKO nema.x.swissprot.diamond_keggOrthology.txt 
+   python ./KGML/simpleDrawKeggMap.py --path ko01100 --blastKO nema.x.swissprot.diamond_keggOrthology.txt 
+
 
 Copy the pdf file to your computer so you can open it with a pdf viewer::
 
    scp -i /your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/ko01100.pdf ~/Desktop
 
-
-See https://github.com/widdowquinn/notebooks/blob/master/Biopython_KGML_intro.ipynb for a full
-introduction to the Biopython KGML rendering module. 
 
 
 
