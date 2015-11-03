@@ -13,12 +13,12 @@ Push the **Launch Instance** button then follow these instructions:
 4. On "Step 4: Add storage": accept the default settings
 5. On "Step 5: Tag Instance": Give your instance a name.
 6. On "Step 6: Configure Security Group": Create a new security group and add security rules to enable ports 22, 80, and 443 (SSH, HTTP, and HTTPS).
-7. On "Step 7: Review Instance Launch": Review the information of your instance. You will see an alarm about the security of your instnce. This is ok, once you click launch, you will be able to make a security key-pair (or use yours if you already have one)
-8. After you launch your instance, the confirmation page will show your instance ID. Click the instance ID to watch your instance status. In the lower half of the page, you will description info of your instance. Copy the puplic IP address to use in the next step.  
+7. On "Step 7: Review Instance Launch": Review the information of your instance. You will see an alarm about the security of your instance. This is ok, once you click launch, you will be able to make a security key-pair (or use yours if you already have one)
+8. After you launch your instance, the confirmation page will show your instance ID. Click the instance ID to watch your instance status. In the lower half of the page, you will description info of your instance. Copy the public IP address to use in the next step.  
 
 Logging into your new cloud instance (Windows version)
 ------------------------------------------------------
-You need an SSH client to conect from you own computer to the Amazon instance you just started in the cloud:
+You need an SSH client to connect from you own computer to the Amazon instance you just started in the cloud:
 
 1. Download PuTTY and PuTTYgen from: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 2. Run PuTTYgen, Find and load your '.pem' file, and Now, "save private key"
@@ -190,7 +190,7 @@ Reference: https://help.github.com/articles/adding-an-existing-project-to-github
 ::
     git remote add origin <remote repository URL>  
  
-9. Push the hub directoyr in your local repository to GitHub.
+9. Push the hub directory in your local repository to GitHub.
 ::
     git push origin master
  
