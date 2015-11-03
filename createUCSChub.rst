@@ -91,6 +91,8 @@ Run Cuffmerge
    cuffmerge -o isofrac0.05 --num-threads 4 --min-isoform-fraction 0.05 assemblies.txt 2&> cuffisofrac0.05.log
    cuffmerge -o isofrac0.2 --num-threads 4 --min-isoform-fraction 0.2 assemblies.txt 2&> cuffisofrac0.2.log
    cuffmerge -o isofrac0.5 --num-threads 4 --min-isoform-fraction 0.5 assemblies.txt 2&> cuffisofrac0.5.log
+   cuffmerge -o isofrac0.7 --num-threads 4 --min-isoform-fraction 0.7 assemblies.txt 2&> cuffisofrac0.7.log
+   cuffmerge -o isofrac0.9 --num-threads 4 --min-isoform-fraction 0.9 assemblies.txt 2&> cuffisofrac0.9.log
 
 
 Download UCSC tools & couple custom scripts
@@ -148,6 +150,7 @@ Populate the track DB
 ::
   
    trackDb=$workingPath/track_hub/$UCSCgenome/trackDb_$shortlabel.txt 
+   > $trackDB
    bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
 
 
@@ -195,6 +198,5 @@ Visualize your tracks in UCSC
 -----------------------------
 get the URL of the raw hub_CompIsoformFrac.txt and add to your tracks on UCSC
 
------------------------------
 
 
