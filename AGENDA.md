@@ -33,3 +33,8 @@ Starting at 9:15am, going until noon, with a coffee break;
    takes this kind of idea quite a bit further and measures several
    read-based metrics.
 
+4. [Make and share your reference-based transcriptome](createUCSChub.rst)
+
+5. [Run 'diamond', a faster BLAST-like system](diamond_blast.rst)
+
+6. [Annotate transcripts with KEGG](kegg_orthology.rst)
