@@ -57,7 +57,8 @@ Run the python script to visualize the KEGG annotations. ko01100 is the KEGG Met
    python ./KGML/simpleDrawKeggMap.py --path ko01100 --blastKO nema.x.swissprot.diamond_keggOrthology.txt 
 
 
-Copy the pdf file to your computer so you can open it with a pdf viewer::
+Copy the pdf file to your computer so you can open it with a pdf viewer. The pathways that were found in the
+nema data are displayed as thickened gray lines::
 
    scp -i your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/ko01100.pdf ~/Desktop
 
