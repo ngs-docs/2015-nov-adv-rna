@@ -34,21 +34,12 @@ You need an SSH client to conect from you own computer to the Amazon instance yo
 install software and link to the working directory
 --------------------------------------------------
 
-.. note::
-   During the installation, copy the commands to your prompt one line 
-   at a time to make sure that every line pass safelly and because some 
-   commands are interactive requiring your confirmation to continue
-
-install prerequisites 
+install prerequisites
 ::
    
    cd ~
    sudo apt-get update
    sudo apt-get install gcc g++ pkg-config wget make
-   sudo apt-get install unzip
-   sudo add-apt-repository ppa:webupd8team/java
-   sudo apt-get update
-   sudo apt-get install oracle-java7-installer
    
 install cufflinks/2.1.1  
 ::
@@ -64,13 +55,6 @@ install cufflinks/2.1.1
    sudo ln -s /usr/src/cufflinks-2.1.1.Linux_x86_64/gffread .
    sudo ln -s /usr/src/cufflinks-2.1.1.Linux_x86_64/gtf_to_sam .
    
-install tmux
-::
-
-   cd ~
-   sudo apt-get install tmux
-   
-
 Get the data
 ------------
 ::
