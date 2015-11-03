@@ -1,6 +1,17 @@
 Make and share your reference based transcriptome
 =================================================
 
+:author: Tamer Mansour
+:date: Nov 3, 2015
+
+This tutorial shows how to build a new transcriptome with Cufflinks
+and share it as a custom track on the UCSC Genome Browser, using github
+to store the files.
+
+Background documentation:
+
+   https://genome.ucsc.edu/goldenPath/help/hgTrackHubHelp.html
+
 Launch an EC2 instance
 ----------------------
 Go ahead and open the EC2 service to lunch a suitable instance. 
@@ -25,14 +36,15 @@ You need an SSH client to connect from you own computer to the Amazon instance y
 3. Run PuTTY, paste the public DNS in the host name. In the left category panel, expand the SSH entry, select Auth, find your private key and click open
 4. click yes if prompted then Log in as "ubuntu"
 5. create a folder to contain all the files of this experiment and define this path
- ::
+
+Install software
+----------------
+
+Define your working directory::
 
     mkdir evalTrans
     workingPath=$"/home/ubuntu/evalTrans"
     export workingPath
-
-Install software
-----------------
 
 Install prerequisites
 ::
@@ -150,7 +162,7 @@ Populate the track DB
 ::
   
    trackDb=$workingPath/track_hub/$UCSCgenome/trackDb_$shortlabel.txt 
-   > $trackDB
+   > $trackDb
    bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
 
 
