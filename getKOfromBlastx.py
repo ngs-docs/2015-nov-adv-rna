@@ -19,7 +19,7 @@ sp2ko = {trans.split(":")[1]: sp.split(":")[1] for (trans,sp,extra) in (line.str
 
 
 header= ['Transcript_id', 'BLASTX','Kegg_Orthology']
-out = open(opts.blastx.split('.')[0] + '_keggOrthology.txt', 'w')
+out = open(opts.blastx.split('.m8')[0] + '_keggOrthology.txt', 'w')
 out.write("\t".join(header) + "\n")
 
 
