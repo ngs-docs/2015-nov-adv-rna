@@ -120,9 +120,11 @@ Now, quantify the reads against the reference using Salmon::
    for i in *.1.fq
    do
       BASE=$(basename $i .1.fq)
-      salmon quant -i nema_index -1 $BASE.1.fq -2 $BASE.2.fq \
-             -o $BASE.quant --libType IU;
+      salmon quant -i nema_index --libType IU \
+             -1 $BASE.1.fq -2 $BASE.2.fq -o $BASE.quant;
    done
+
+(Note that ``--libType`` must come *before* the read files!)
 
 This will create a bunch of directories named something like
 ``0Hour_ATCACG_L002001.quant``, containing a bunch of files.  Take a look
