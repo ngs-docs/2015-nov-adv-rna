@@ -154,38 +154,42 @@ Populate the track DB
 Upload your data to github
 --------------------------
 Reference: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+:
+ 
+1. Make a github account at https://github.com/
+::
+    
+2. Create a new repository (https://help.github.com/articles/creating-a-new-repository/)
+::
+    
+3. Install Git to your Amazon instance
+::
+    sudo apt-get install git
 
+4. Initialize the local directory as a Git repository
+::
+    cd $workingPath
+    git init 
  
- 1. Make a github account at https://github.com/
+5. Add the files in your new local repository
+::
+    git add track_hub
  
- 2. Create a new repository (https://help.github.com/articles/creating-a-new-repository/)
+6. Commit the files that you've staged in your local repository.
+::
+    git commit -m "upload track hub"
  
- 3. Install Git to your Amazon instance
- ::
-     sudo apt-get install git
+7. At the top of your GitHub repository's Quick Setup page, copy the remote repository URL(the HTTPS one).
+::
+    
+
+8. In Terminal, add the URL for the remote repository 
+::
+    git remote add origin <remote repository URL>  
  
- 4. Initialize the local directory as a Git repository
- ::
-     cd $workingPath
-     git init 
- 
- 5. Add the files in your new local repository
- ::
-     git add track_hub
- 
- 6. Commit the files that you've staged in your local repository.
- ::
-     git commit -m "upload track hub"
- 
- 7. At the top of your GitHub repository's Quick Setup page, copy the remote repository URL(the HTTPS one).
- 
- 8. In Terminal, add the URL for the remote repository 
- ::
-     git remote add origin <remote repository URL>  
- 
- 9. Push the hub directoyr in your local repository to GitHub.
- ::
-     git push origin master
+9. Push the hub directoyr in your local repository to GitHub.
+::
+    git push origin master
  
 Visualize your tracks in UCSC
 -----------------------------
