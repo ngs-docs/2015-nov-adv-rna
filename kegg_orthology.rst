@@ -27,6 +27,7 @@ Getting Kegg Orthology Numbers
 We need the blastx results from `diamond_blast.rst <diamond_blast.rst>`__, which you can download with:: 
 
    curl -O https://s3-us-west-1.amazonaws.com/dib-training.ucdavis.edu/mRNAseq-non-2015-05-04/nema.x.swissprot.diamond.m8.gz
+   gunzip nema.x.swissprot.diamond.m8.gz 
 
 Download and run a python script to relate your blastx results to their KEGG Orthology numbers
 using the linkage database information::
