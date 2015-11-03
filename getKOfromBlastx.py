@@ -34,9 +34,11 @@ with open(opts.blastx) as f:
 	    prev = contig
 	    spHit = line[1]
 	    spShort = spHit.split('|')[1]
-	    if spShort in sp2ko.keys():
-	        keggOrthology = sp2ko[spShort]
-	        out.write(contig + '\t' + spHit + '\t' + keggOrthology + '\n')
+        hitValue = sp2ko.get(spShort, None)
+	    #if spShort in sp2ko.keys():
+        if hitValue is not None:
+            keggOrthology = sp2ko[spShort]
+            out.write(contig + '\t' + spHit + '\t' + keggOrthology + '\n')
     f.close()
 
 
