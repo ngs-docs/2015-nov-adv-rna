@@ -28,8 +28,8 @@ with open(opts.blastx) as f:
     for line in f:
 	line = line.strip().split('\t')
 	contig = line[0]
-	if contig == prev:  #duplicate blast result
-	    continue
+	if contig == prev:
+	    continue  #use the top e-val result, if multiple (=first hit)
 	else:
 	    prev = contig
 	    spHit = line[1]
