@@ -7,7 +7,7 @@ library(scales)
 #Get the data into an R dataframe:
 
 #set working directory --> path to your salmon quants folder
-setwd("~/dib-training-materials/salmon_quants")
+#setwd("~/dib-training-materials/salmon_quants")
 
 ## list all quant.sf files:
 files <- (Sys.glob("*/quant.sf"))
