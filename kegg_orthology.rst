@@ -59,7 +59,7 @@ Run the python script to visualize the KEGG annotations. ko01100 is the KEGG Met
 
 Copy the pdf file to your computer so you can open it with a pdf viewer::
 
-   scp -i /your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/ko01100.pdf ~/Desktop
+   scp -i your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/ko01100.pdf ~/Desktop
 
 
 
