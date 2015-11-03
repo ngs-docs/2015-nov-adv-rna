@@ -91,6 +91,8 @@ Run Cuffmerge
    cuffmerge -o isofrac0.05 --num-threads 4 --min-isoform-fraction 0.05 assemblies.txt 2&> cuffisofrac0.05.log
    cuffmerge -o isofrac0.2 --num-threads 4 --min-isoform-fraction 0.2 assemblies.txt 2&> cuffisofrac0.2.log
    cuffmerge -o isofrac0.5 --num-threads 4 --min-isoform-fraction 0.5 assemblies.txt 2&> cuffisofrac0.5.log
+   cuffmerge -o isofrac0.7 --num-threads 4 --min-isoform-fraction 0.7 assemblies.txt 2&> cuffisofrac0.7.log
+   cuffmerge -o isofrac0.9 --num-threads 4 --min-isoform-fraction 0.9 assemblies.txt 2&> cuffisofrac0.9.log
 
 
 Download UCSC tools & couple custom scripts
@@ -142,11 +144,59 @@ Convert GTF files to BigBed files
      echo $identifier >> $workingPath/data/UCSC_assemblies.txt
    done
 
+
 Populate the track DB  
 ---------------------
 ::
   
    trackDb=$workingPath/track_hub/$UCSCgenome/trackDb_$shortlabel.txt 
+   > $trackDB
    bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
+
+
+Upload your data to github
+--------------------------
+Reference: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+:
+ 
+1. Make a github account at https://github.com/
+::
+    
+2. Create a new repository (https://help.github.com/articles/creating-a-new-repository/)
+::
+    
+3. Install Git to your Amazon instance
+::
+    sudo apt-get install git
+
+4. Initialize the local directory as a Git repository
+::
+    cd $workingPath
+    git init 
+ 
+5. Add the files in your new local repository
+::
+    git add track_hub
+ 
+6. Commit the files that you've staged in your local repository.
+::
+    git commit -m "upload track hub"
+ 
+7. At the top of your GitHub repository's Quick Setup page, copy the remote repository URL(the HTTPS one).
+::
+    
+
+8. In Terminal, add the URL for the remote repository 
+::
+    git remote add origin <remote repository URL>  
+ 
+9. Push the hub directoyr in your local repository to GitHub.
+::
+    git push origin master
+ 
+Visualize your tracks in UCSC
+-----------------------------
+get the URL of the raw hub_CompIsoformFrac.txt and add to your tracks on UCSC
+
 
 
