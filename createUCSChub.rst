@@ -24,17 +24,17 @@ You need an SSH client to conect from you own computer to the Amazon instance yo
 2. Run PuTTYgen, Find and load your '.pem' file, and Now, "save private key"
 3. Run PuTTY, paste the public DNS in the host name. In the left category panel, expand the SSH entry, select Auth, find your private key and click open
 4. click yes if prompted then Log in as "ubuntu"
-5. create a folder to contain all the files of this expermint and define this path
+5. create a folder to contain all the files of this experiment and define this path
  ::
 
     mkdir evalTrans
     workingPath=$"/home/ubuntu/evalTrans"
     export workingPath
 
-install software
+Install software
 ----------------
 
-install prerequisites
+Install prerequisites
 ::
    
    cd ~

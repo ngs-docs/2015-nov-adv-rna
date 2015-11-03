@@ -35,6 +35,12 @@ Starting at 9:15am, going until noon, with a coffee break;
 
 4. [Make and share your reference-based transcriptome](createUCSChub.rst)
 
-5. [Run 'diamond', a faster BLAST-like system](diamond_blast.rst)
+   This tutorial shows how to build a new transcriptome with Cufflinks
+   and share it as a custom track on the UCSC Genome Browser, using github
+   to store the files.
+
+5. [Run 'diamond', a faster BLAST-like program](diamond_blast.rst)
+
+   BLAST things faster!
 
 6. [Annotate transcripts with KEGG](kegg_orthology.rst)

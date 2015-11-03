@@ -13,6 +13,13 @@ expression levels.  This can interfere with quantification and annotation.
 We can use Salmon to eliminate many of these transcripts, by estimating
 their transcription levels and removing low-expressing transcripts.
 
+NOTE: Richard Smith-Unna has suggested that a better approach is to
+use `transrate <transrate.rst>`__ to filter your contigs; it actually
+does this automatically in read mapping mode. For example,
+the "good contigs" output for the *Nematostella* data set processed
+in `transrate.rst <transrate.rst>`__ will end
+up in ``transrate_results/nema/good.nema.fa``.
+
 ----
 
 We'll start from the m3.xlarge Amazon machine booted & configured in
@@ -36,7 +43,7 @@ Reduce transcriptome complexity by removing low coverage contigs. Use awk to sum
 numReads column of each quant.sf file and print contignames that have counts above threshold 
 (10 total counts)::
 
-   awk '{x[$1] += $4} END {for(y in x) if (x[y] >10) print y}' *.quant/quant.sf | sort > contigs_over_threshold.txt
+   awk '{x[$1] += $3} END {for(y in x) if (x[y] >10) print y}' *.quant/quant.sf | sort > contigs_over_threshold.txt
 
 Then, use this list of contigs to subset the fasta reference, by getting (and running) a python script to subset the fasta file, keeping all entries that match the contig names above::
 

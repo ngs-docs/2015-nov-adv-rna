@@ -168,8 +168,8 @@ Next, let's evaluate against reads, prepared as in `salmon.rst <salmon.rst>`__::
 
    ln -fs ../data/*.?.fq .
 
-   LIST1=$(ls -1 *.1.fq | head -1 | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
-   LIST2=$(ls -1 *.2.fq | head -1 | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
+   LIST1=$(ls -1 *.1.fq | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
+   LIST2=$(ls -1 *.2.fq | sort -n | awk -vORS=, '{ print $1 }' | sed 's/,$/\n/')
 
    transrate -a nema.fa --left=$LIST1 --right=$LIST2
 
