@@ -223,7 +223,13 @@ Reference: https://help.github.com/articles/adding-an-existing-project-to-github
  
 Visualize your tracks in UCSC
 -----------------------------
-get the URL of the raw hub_CompIsoformFrac.txt and add to your tracks on UCSC
 
+Get the URL of the raw hub_CompIsoformFrac.txt and add to your tracks on UCSC.
 
+For example, you can add CTB's version of this to UCSC by going to the Track Data Hubs URL (http://genome.ucsc.edu/cgi-bin/hgHubConnect) on http://genome.ucsc.edu/, selecting "My hubs", and putting this URL in::
 
+   https://raw.githubusercontent.com/ctb/2015-nov-trackhub-example/master/track_hub/hub_CompIsoformFrac.txt
+
+---
+
+`Return to agenda <AGENDA.md>`__
