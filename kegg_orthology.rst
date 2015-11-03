@@ -58,12 +58,22 @@ Run the python script to visualize the KEGG annotations. ko01100 is the KEGG Met
 
 
 Copy the pdf file to your computer so you can open it with a pdf viewer. The pathways that were found in the
-nema data are displayed as thickened gray lines::
+nema data are displayed as thickened dark gray lines::
 
-   scp -i your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/ko01100.pdf ~/Desktop
+   # This code uses the same information we used to login:
+   # KEY = your private key
+   # YOUR-AMAZON-MACHINE = the "Public DNS" of your amazon machine
+   scp -i KEY.pem ubuntu@YOUR-AMAZON-MACHINE:~/kegg/ko01100.pdf ~/Desktop
+
+This script can be used to visualize any KEGG pathway. For example, TCA cycle::
+
+   #run script
+   python ./KGML/simpleDrawKeggMap.py --path ko00020 --blastKO nema.x.swissprot.diamond_keggOrthology.txt
+   #download pdf file(s)
+   scp -i your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/*.pdf ~/Desktop
 
 
-
+In this example, orthologs that are colored dark gray are present in your data.
 
 
 
