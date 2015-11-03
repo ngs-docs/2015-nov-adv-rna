@@ -73,7 +73,8 @@ This script can be used to visualize any KEGG pathway. For example, TCA cycle::
    scp -i your-key.pem ubuntu@your-amazon-machine.amazonaws.com:~/kegg/*.pdf ~/Desktop
 
 
-In this example, orthologs that are colored dark gray are present in your data.
+In this map, orthologs are represented as boxes, rather than lines (as in the metabolic map, above).
+Again, orthologs that are colored dark gray are present in your data.
 
 
 
