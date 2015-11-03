@@ -165,6 +165,21 @@ Populate the track DB
    > $trackDb
    bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
 
+Did it all work?
+----------------
+
+Check::
+
+   ls -l $workingPath/track_hub/equCab2/BigBed
+
+should yield something like::
+
+   total 352
+   -rw-rw-r-- 1 ubuntu ubuntu 69927 Nov  3 18:10 isofrac0.05.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 67022 Nov  3 18:10 isofrac0.2.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 65627 Nov  3 18:10 isofrac0.5.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 70916 Nov  3 18:10 isofrac0.7.BigBed
+   -rw-rw-r-- 1 ubuntu ubuntu 70447 Nov  3 18:10 isofrac0.9.BigBed
 
 Upload your data to github
 --------------------------
