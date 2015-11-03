@@ -31,8 +31,8 @@ You need an SSH client to conect from you own computer to the Amazon instance yo
     workingPath=$"/home/ubuntu/evalTrans"
     export workingPath
 
-install software and link to the working directory
---------------------------------------------------
+install software
+----------------
 
 install prerequisites
 ::
@@ -141,6 +141,11 @@ Convert GTF files to BigBed files
      cp merged.BigBed $workingPath/track_hub/$UCSCgenome/BigBed/${identifier}.BigBed
      echo $identifier >> $workingPath/data/UCSC_assemblies.txt
    done
+
+Populate the track DB  
+---------------------
+::
+  
    trackDb=$workingPath/track_hub/$UCSCgenome/trackDb_$shortlabel.txt 
    bash $workingPath/edit_trackDb.sh "$trackDb" "$workingPath/data/UCSC_assemblies.txt"
 
