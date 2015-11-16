@@ -44,3 +44,7 @@ Starting at 9:15am, going until noon, with a coffee break;
    BLAST things faster!
 
 6. [Annotate transcripts with KEGG](kegg_orthology.rst)
+
+## Other links
+
+Harold Pimentel's excellent [Kallisto slides](https://pods.iplantcollaborative.org/wiki/download/attachments/21135454/2015_09_22%20Harold.pdf?version=1&modificationDate=1442849594000&api=v2)
